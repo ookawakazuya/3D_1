@@ -347,7 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4009fc6beec694888910194d024c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1340518272}
+  Piayer: {fileID: 1340518272}
+  enemy: {fileID: 1158050054}
+  speedParameter: 1
 --- !u!65 &1158050056
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -418,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158050054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 4.41, z: -67.83}
+  m_LocalPosition: {x: 0.44, y: 4.41, z: -74.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -440,7 +442,7 @@ GameObject:
   - component: {fileID: 1340518273}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
