@@ -10,6 +10,8 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] bool isOnGround;//地面についているか
     public bool gameOver;//何も書かなければprivate
     Animator playerAnim;
+    [SerializeField] ParticleSystem ExplosionParicle;
+    [SerializeField] ParticleSystem DirtParticle;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,6 +28,7 @@ public class PlayerController2 : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
             isOnGround = false; //ジャンプした＝地面にいない
             playerAnim.SetTrigger("Jump_trig");//ジャンプアニメ発動準備
+            DirtParticle.Stop();
         }
     }
     //　衝突が起きたら実行
@@ -34,6 +37,7 @@ public class PlayerController2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {// ぶつかった相手（collision）のタグがGroundなら
             isOnGround = true;// 地面についている状態に変更
+            DirtParticle.Play();
         }
         else if(collision.gameObject.CompareTag("Obstacle"))
         {
@@ -41,6 +45,8 @@ public class PlayerController2 : MonoBehaviour
             Debug.Log("Game Over!");
             playerAnim.SetBool("Death_b",true);//ここで死亡状態にする。(Death_bとかいうのは本来自分で定義できる)
             playerAnim.SetInteger("Deathtype_int", 1);//integerは整数の意味。死亡のタイプ？を1番目のやつにする的な。
+            ExplosionParicle.Play();// 再生
+            DirtParticle.Stop();// 砂埃のアニメは消す
         }
     }
 }
